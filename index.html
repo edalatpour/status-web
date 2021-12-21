@@ -29,6 +29,21 @@
             </style>
             <script>
 
+            const changeFavicon = link => {
+                let $favicon = document.querySelector('link[rel="icon"]')
+                // If a <link rel="icon"> element already exists,
+                // change its href to the given link.
+                if ($favicon !== null) {
+                    $favicon.href = link
+                // Otherwise, create a new element and append it to <head>.
+                } else {
+                    $favicon = document.createElement("link")
+                    $favicon.rel = "icon"
+                    $favicon.href = link
+                    document.head.appendChild($favicon)
+                }
+            }
+
             function setColor(color) {
                 //alert("setColor");
                 url = "https://jrubeasp5d.execute-api.us-east-1.amazonaws.com/edalatpour@hotmail.com/" + color;
@@ -71,6 +86,8 @@
                 //alert("setPageColor");
                 // set the bg color to the text value
                 document.body.style.backgroundColor = statusText;
+                iconUrl = "http://www.stackoverflow.com/" + statusText + ".ico"
+                changeFavicon(iconUrl)
             }
 
             function httpGetAsync(theUrl, callback) {
