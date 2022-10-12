@@ -29,49 +29,6 @@
             </style>
             <script>
 
-            const changeFavicon = link => {
-                let $favicon = document.querySelector('link[rel="icon"]')
-                // If a <link rel="icon"> element already exists,
-                // change its href to the given link.
-                if ($favicon !== null) {
-                    $favicon.href = link
-                // Otherwise, create a new element and append it to <head>.
-                } else {
-                    $favicon = document.createElement("link")
-                    $favicon.rel = "icon"
-                    $favicon.href = link
-                    document.head.appendChild($favicon)
-                }
-            }
-
-            function setColor(color) {
-                //alert("setColor");
-                url = "https://jrubeasp5d.execute-api.us-east-1.amazonaws.com/edalatpour@hotmail.com/" + color;
-                httpGetAsync(url, function(result){
-                    getStatus();
-                });
-            }
-
-            function setGreen() {
-                //alert("green")
-                setColor("green");
-            }
-
-            function setRed() {
-                //alert("red");
-                setColor("red");
-            }
-
-            function setBlue() {
-                //alert("blue");
-                setColor("blue");
-            }
-
-            function setBlack() {
-                //alert("black");
-                setColor("black");
-            }
-
             function getStatus() {
                 //alert("getStatus");
                 //doit
@@ -80,14 +37,6 @@
                 httpGetAsync(url, function(result){
                     setText(result);
                 });
-            }
-
-            function setPageColor(statusText) {
-                //alert("setPageColor");
-                // set the bg color to the text value
-                document.body.style.backgroundColor = statusText;
-                iconUrl = statusText + ".png"
-                changeFavicon(iconUrl)
             }
 
             function setText(statusText) {
@@ -114,10 +63,6 @@
     <body onload="getStatus()">
         <div class="container">
             <label id="myLabel"></label>
-            <button class="block" style="background-color: red;" onClick="setRed()">red</button>
-            <button class="block" style="background-color: green;" onClick="setGreen()">green</button>
-            <button class="block" style="background-color: blue;" onClick="setBlue()">blue</button>
-            <button class="block" style="background-color: black;" onClick="setBlack()">black</button>
         </div>
         
     </body>
