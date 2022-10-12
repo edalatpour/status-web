@@ -78,7 +78,7 @@
                 // get the status
                 url = "https://api.ussquash.com/resources/res/trn/live_matrix?date=2022-10-11&tournamentId=14103";
                 httpGetAsync(url, function(result){
-                    setPageColor(result);
+                    setText(result);
                 });
             }
 
@@ -88,6 +88,13 @@
                 document.body.style.backgroundColor = statusText;
                 iconUrl = statusText + ".png"
                 changeFavicon(iconUrl)
+            }
+
+            function setText(statusText) {
+                //alert("setPageColor");
+                // set the bg color to the text value
+                const myLabel = document.getElementById('myLabel');
+                myLabel.textContent = statusText;
             }
 
             function httpGetAsync(theUrl, callback) {
@@ -106,7 +113,7 @@
 
     <body onload="getStatus()">
         <div class="container">
-            <label></label>
+            <label id="myLabel"></label>
             <button class="block" style="background-color: red;" onClick="setRed()">red</button>
             <button class="block" style="background-color: green;" onClick="setGreen()">green</button>
             <button class="block" style="background-color: blue;" onClick="setBlue()">blue</button>
